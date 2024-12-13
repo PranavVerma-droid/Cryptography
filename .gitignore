@@ -1,3 +1,4 @@
 keys/
+Project/__pycache__/
 message.txt
 signature.txt
