@@ -1,8 +1,12 @@
+# Crypto Library w/ all Functions.
+# Made by Pranav Verma from XI Raman
+
 import random;
 import math;
 import os;
 import hashlib;
 
+# standard gcd function
 def gcd(a, b):
     while b != 0:
         a, b = b, a % b
@@ -13,22 +17,22 @@ def generate_keys():
     for i in range(100, 501):
         is_prime = True
         for j in range(2, int(math.sqrt(i)) + 1):
-            if i % j == 0:
+            if i % j == 0: #check for prime
                 is_prime = False
                 break
         if is_prime:
             primes.append(i)
 
-    p = random.choice(primes)
-    q = random.choice(primes)
-    while p == q:
+    p = random.choice(primes) # random select prime 1
+    q = random.choice(primes) # random select prime 2
+    while p == q: # the two numbers should not be equal to the other 
         q = random.choice(primes)
 
-    n = p * q
-    phi = (p - 1) * (q - 1)
+    n = p * q # calc. base
+    phi = (p - 1) * (q - 1) #eulers totient function
 
     e = random.randint(2, phi - 1)
-    while gcd(e, phi) != 1:
+    while gcd(e, phi) != 1: # calc gcd
         e = random.randint(2, phi - 1)
 
     d = pow(e, -1, phi)
