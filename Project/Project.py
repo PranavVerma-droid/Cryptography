@@ -1,6 +1,3 @@
-# This file contains the Final Version of my Cryptography Algorithm.
-# Made by Pranav Verma, XI Raman.
-
 import CryptoLib as lb;
 import os;
 import sys;
@@ -62,7 +59,7 @@ while True:
         private_key = lb.load_key('keys/private.key')
         filename = 'message.txt'
         if not os.path.exists(filename):
-            print("File not found.")
+            print("File " + filename + " Not Found.")
             exit()
         with open(filename, 'r') as f:
             encrypted_message = f.read().strip()
@@ -75,7 +72,7 @@ while True:
         message = input("Enter the original message: ")
         filename = 'signature.txt'
         if not os.path.exists(filename):
-            print("File not found.")
+            print("File " + filename + " Not Found.")
             exit()
         with open(filename, 'r') as f:
             signature = f.read().strip()
@@ -89,10 +86,12 @@ while True:
         sender_public_key = lb.load_key('keys/public.key')
         recipient_private_key = lb.load_key('keys/private.key')
         if (not os.path.exists('signature.txt')):
-            print("Signature Not Found.")
+            print("'signature.txt' Not Found.")
+            print("Try Encrypting a Message First.")
             exit()
         if (not os.path.exists('message.txt')):
-            print("Message.txt Not Found.")
+            print("'message.txt' Not Found.")
+            print("Try Encrypting a Message First.")
             exit()
         with open('message.txt', 'r') as f:
             encrypted_message = f.read().strip()

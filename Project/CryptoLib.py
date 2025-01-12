@@ -90,6 +90,7 @@ def sign_message(message, private_key):
     message_hash = hash_message(message)
     signature = []
     for char in message_hash:
+        # ok how did this actually work
         signed_char = pow(ord(char), d, n)
         signature.append(str(signed_char))
     return ' '.join(signature)
@@ -106,7 +107,6 @@ def verify_signature(message, signature, public_key):
     return recovered_hash == hash_message(message)
 
 def encrypt_and_sign(message, recipient_public_key, sender_private_key):
-    # what is this my guy ☠️
     encrypted_message = encryptMessage(message, recipient_public_key)
     signature = sign_message(encrypted_message, sender_private_key)
     return encrypted_message, signature
